@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.photos-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: brown;
+  align-items: center;
+  padding: 0 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+nav button {
+  background-color: bisque;
+}
+
+.gallery-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.title {
+  margin-top: 4rem;
+  text-align: center;
+}
