@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="memeController.js"></script>
-    <script src="galleryController.js"></script>
+    <script src="main.js"></script>
+    <script src="./controllers/memeController.js"></script>
+    <script src="./controllers/galleryController.js"></script>
+    <script src="./services//memeService.js"></script>
     <link rel="stylesheet" href="main.css" />
   </head>
-  <body onload="renderGallery()">
+  <body onload="init()">
     <nav>
       <h1>logo</h1>
 
@@ -25,6 +27,7 @@
     </section>
     <section>
       <canvas class="meme-canvas" height="450" width="450"></canvas>
+      <input type="text" onchange="onSetLineTxt(this.value)" />
     </section>
   </body>
 </html>
