@@ -38,3 +38,11 @@ function renderMeme() {
     }
   };
 }
+
+function downloadImg(elLink) {
+  const elCanvas = document.querySelector(".meme-canvas");
+  const imgContent = elCanvas.toDataURL("image/jpeg");
+  elLink.href = imgContent;
+  elLink.download = "amazingFile.jpeg";
+  link.click();
+}
