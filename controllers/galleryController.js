@@ -1,14 +1,17 @@
 "use strict";
 
+const gImgs = [];
+const elImages = [];
+
 function renderGallery() {
-  const images = [];
   for (let index = 1; index <= 18; index++) {
-    images.push(
+    gImgs.push({ id: index, url: `imgs/${index}.jpg` });
+    elImages.push(
       `<img onclick="onImgSelect(this.id)" id="${index}" height="75px" width="75px" src="imgs/${index}.jpg"/>`
     );
   }
 
-  document.querySelector(".photos-gallery").innerHTML = images.join("");
+  document.querySelector(".photos-gallery").innerHTML = elImages.join("");
 }
 
 function onImgSelect(id) {

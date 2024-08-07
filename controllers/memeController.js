@@ -1,14 +1,5 @@
 "use strict";
 
-var gImgs = [
-  { id: 1, url: "imgs/1.jpg", keywords: ["funny", "cat"] },
-  {
-    id: 2,
-    url: "imgs/2.jpg",
-    keywords: ["funny", "cat"],
-  },
-];
-
 var gKeywordSearchCountMap = { funny: 12, cat: 16, baby: 2 };
 
 function onSetLineTxt(txt) {
@@ -124,4 +115,54 @@ function onInputTextSize(value) {
 function onArrowClick(value) {
   arrowClick(value);
   renderMeme();
+}
+
+function onClearTextInput() {
+  clearTextInput();
+  renderMeme();
+}
+
+function onSaveToStorageGallery() {
+  saveToStorageGallery();
+}
+
+function renderMemeGallery() {
+  const memes = getAllMemesFromStorageGallery();
+
+  const elGallery = document.querySelector(".memes-gallery");
+
+  const memesToShow = memes.map((meme) => {
+    const elCanvas = document.createElement("canvas");
+    elCanvas.style.display = "flex";
+
+    elCanvas.onclick = () => {
+      setCurrentMeme(meme);
+      renderMeme();
+    };
+    elCanvas.height = 450;
+    elCanvas.width = 450;
+    const ctx = elCanvas.getContext("2d");
+    const elImg = new Image();
+    elImg.src = gImgs.find((img) => img.id === meme.selectedImgId).url;
+    elImg.onload = () => {
+      ctx.drawImage(elImg, 0, 0, elCanvas.width, elCanvas.height);
+      for (let i = 0; i < meme.lines.length; i++) {
+        const txtObject = meme.lines[i];
+        ctx.textAlign = txtObject.alignment ?? "center";
+        ctx.font = `${txtObject.size}px ${txtObject.font ?? "serif"}`;
+        ctx.fillStyle = txtObject.color;
+        ctx.fillText(
+          txtObject.txt,
+          elCanvas.width * 0.5,
+          txtObject.y + txtObject.size
+        );
+      }
+    };
+    elCanvas.style.scale = (0.25, 0.25);
+    elCanvas.style.margin = 0;
+    elCanvas.style.padding = 0;
+    return elCanvas;
+  });
+
+  elGallery.append(...memesToShow);
 }

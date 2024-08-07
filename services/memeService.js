@@ -66,3 +66,24 @@ function arrowClick(value) {
     ? (gMeme.lines[gMeme.selectedLineIdx].y += 5)
     : (gMeme.lines[gMeme.selectedLineIdx].y -= 5);
 }
+
+function clearTextInput() {
+  gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+  gMeme.selectedLineIdx = -1;
+}
+
+function saveToStorageGallery() {
+  localStorage.setItem(`meme-${localStorage.length}`, JSON.stringify(gMeme));
+}
+
+function getAllMemesFromStorageGallery() {
+  const memes = [];
+  for (let index = 0; index < localStorage.length; index++) {
+    memes.push(JSON.parse(localStorage.getItem(`meme-${index}`)));
+  }
+  return memes;
+}
+
+function setCurrentMeme(meme) {
+  gMeme = meme;
+}
