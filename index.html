@@ -26,9 +26,51 @@
       <div class="photos-gallery"></div>
     </section>
     <section>
-      <canvas class="meme-canvas" height="450" width="450"></canvas>
-      <input type="text" onchange="onSetLineTxt(this.value)" />
-      <a onclick="downloadImg(this)">download</a>
+      <canvas
+        onclick="onCanvasClick(event)"
+        class="meme-canvas"
+        height="450"
+        width="450"
+      ></canvas>
+      <form class="control-panel" onsubmit="return false;">
+        <input
+          class="text-input"
+          type="text"
+          onchange="onSetLineTxt(this.value)"
+        />
+        <input
+          class="color-input"
+          type="color"
+          onchange="onSetColorText(this.value)"
+        />
+        <label for="input-font-size">font size</label>
+        <input
+          id="input-font-size"
+          class="input-font-size"
+          type="number"
+          onchange="onInputTextSize(+this.value)"
+        />
+        <a onclick="downloadImg(this)">download</a>
+        <button onclick="onAddLine()">Add line</button>
+        <button onclick="onSwitchLine()">switch line</button>
+        <button onclick="onAlignFont('right')" class="left-text">◀</button>
+        <button onclick="onAlignFont('left')" class="right-text">▶</button>
+        <button onclick="onAlignFont('center')" class="center-text">⬌</button>
+        <button onclick="onSetSizeText('+')" class="font-size">increase</button>
+        <button onclick="onSetSizeText('-')" class="font-size">decrease</button>
+        <button onclick="onArrowClick('+')" class="line-position">⬇️</button>
+        <button onclick="onArrowClick('-')" class="line-position">⬆️</button>
+
+        <button>clear</button>
+        <select
+          onchange="onFontSelected(this.value)"
+          class="font-family-button"
+        >
+          <option value="serif">select font</option>
+          <option value="arial">arial</option>
+          <option value="David">David</option>
+        </select>
+      </form>
     </section>
   </body>
 </html>
