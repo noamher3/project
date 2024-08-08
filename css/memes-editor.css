@@ -1,0 +1,124 @@
+.meme-editor-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  justify-content: center;
+}
+
+.meme-canvas {
+  height: 450px;
+  width: 450px;
+  border-radius: 15px;
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  justify-content: space-between;
+  background-color: #272829;
+  padding: 1rem;
+  width: clamp(300px, 50%, 400px);
+  border-radius: 1rem;
+}
+
+.control-top-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.color-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.color-input::-webkit-color-swatch {
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.color-input::-moz-color-swatch {
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.font-edit-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.left-text,
+.center-text,
+.right-text,
+.line-position,
+.font-size {
+  height: 36px;
+  aspect-ratio: 1;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-center-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.control-center-div div:first-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.control-center-div div:first-child button {
+  font-size: 1.25rem;
+  padding: 0.5rem;
+}
+
+.control-center-div div:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.control-bottom-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.control-bottom-div button,
+.control-bottom-div a {
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: #d2d2d2;
+}
+
+@media screen and (max-width: 600px) {
+  .meme-editor-section {
+    flex-direction: column;
+  }
+  .meme-editor-section .meme-canvas {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .meme-editor-section .control-panel {
+    width: 80vw;
+    height: 80vw;
+  }
+}

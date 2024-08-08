@@ -11,7 +11,6 @@ function renderMeme() {
   const elCanvas = document.querySelector(".meme-canvas");
   const ctx = elCanvas.getContext("2d");
   const meme = getMeme();
-
   const elImg = new Image();
   elImg.src = gImgs.find((img) => img.id === meme.selectedImgId).url;
   elImg.onload = () => {
@@ -29,9 +28,6 @@ function renderMeme() {
       }
       ctx.font = `${txtObject.size}px ${txtObject.font ?? "serif"}`;
       ctx.fillStyle = txtObject.color;
-
-      console.log(txtObject.y);
-
       ctx.fillText(
         txtObject.txt,
         elCanvas.width * 0.5,
@@ -72,7 +68,6 @@ function onSwitchLine() {
 function onCanvasClick(event) {
   const elCanvas = document.querySelector(".meme-canvas");
   const meme = getMeme();
-
   const lineClicked = meme.lines.find(
     (line) =>
       event.offsetX >= line.x &&
@@ -128,13 +123,9 @@ function onSaveToStorageGallery() {
 
 function renderMemeGallery() {
   const memes = getAllMemesFromStorageGallery();
-
   const elGallery = document.querySelector(".memes-gallery");
-
   const memesToShow = memes.map((meme) => {
     const elCanvas = document.createElement("canvas");
-    elCanvas.style.display = "flex";
-
     elCanvas.onclick = () => {
       setCurrentMeme(meme);
       renderMeme();
@@ -158,11 +149,12 @@ function renderMemeGallery() {
         );
       }
     };
-    elCanvas.style.scale = (0.25, 0.25);
+    elCanvas.style.scale = (0.5, 0.5);
     elCanvas.style.margin = 0;
     elCanvas.style.padding = 0;
+    elCanvas.className = "saved-meme";
     return elCanvas;
   });
 
-  elGallery.append(...memesToShow);
+  elGallery?.append(...memesToShow);
 }
