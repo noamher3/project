@@ -1,0 +1,32 @@
+.memes-section .title {
+  text-align: center;
+  font-size: 40px;
+  border-bottom: 2px solid #272829;
+  width: max-content;
+  margin: auto;
+}
+.memes-gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: #d2d2d2;
+}
+.memes-gallery .saved-meme {
+  border-radius: 16px;
+}
+
+@media screen and (max-width: 600px) {
+  .memes-section .title {
+    padding-top: 10px;
+    font-size: 30px;
+  }
+  .memes-gallery {
+    justify-content: center;
+    display: inline-flex;
+    /* overflow-y: scroll !important; */
+  }
+  .memes-gallery .saved-meme {
+    width: 80vw;
+  }
+}

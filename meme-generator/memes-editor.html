@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/gallery.css" />
+    <link rel="stylesheet" href="../css/memes-editor.css" />
+    <link rel="stylesheet" href="../css/saved-memes.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    s
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body onload="onInit('memes-editor')">
+    <header>
+      <!-- <h1>logo</h1> -->
+      <img src="../imgs/bestlogo.png" alt="" />
+
+      <div class="header-buttons-box">
+        <a class="nav-tab" href="../meme-generator/index.html">Home</a>
+        <a class="nav-tab" href="../meme-generator/gallery.html">Gallery</a>
+        <a class="nav-tab" href="../meme-generator/memes-editor.html">Memes</a>
+        <a class="nav-tab" href="../meme-generator/saved-memes.html"
+          >Saved Memes</a
+        >
+      </div>
+    </header>
+
+    <section id="meme-editor-section" class="meme-editor-section">
+      <canvas
+        onclick="onCanvasClick(event)"
+        class="meme-canvas"
+        height="450"
+        width="450"
+      ></canvas>
+
+      <form class="control-panel" onsubmit="return false;">
+        <div class="control-top-div">
+          <input
+            class="text-input"
+            type="text"
+            placeholder="line-text"
+            onchange="onSetLineTxt(this.value)"
+          />
+          <div class="font-edit-div">
+            <input
+              class="color-input"
+              type="color"
+              onchange="onSetColorText(this.value)"
+            />
+            <input
+              class="input-font-size"
+              type="number"
+              placeholder="font-size"
+              onchange="onInputTextSize(+this.value)"
+            />
+            <button onclick="onSetSizeText('+')" class="font-size">🗚</button>
+            <button onclick="onSetSizeText('-')" class="font-size">🗛</button>
+            <select
+              onchange="onFontSelected(this.value)"
+              class="font-family-button"
+            >
+              <option value="serif">select font</option>
+              <option value="arial">arial</option>
+              <option value="David">David</option>
+            </select>
+          </div>
+        </div>
+        <div class="control-center-div">
+          <div>
+            <button onclick="onAddLine()">Add line</button>
+            <button onclick="onSwitchLine()">switch line</button>
+          </div>
+          <div>
+            <button onclick="onAlignFont('right')" class="left-text">
+              <i class="fa-solid fa-align-left"></i>
+            </button>
+            <button onclick="onAlignFont('center')" class="center-text">
+              <i class="fa-solid fa-align-center"></i>
+            </button>
+            <button onclick="onAlignFont('left')" class="right-text">
+              <i class="fa-solid fa-align-right"></i>
+            </button>
+            <button onclick="onArrowClick('+')" class="line-position">
+              <i class="fa-solid fa-down-long"></i>
+            </button>
+            <button onclick="onArrowClick('-')" class="line-position">
+              <i class="fa-solid fa-up-long"></i>
+            </button>
+          </div>
+        </div>
+        <div class="control-bottom-div">
+          <button onclick="onSaveToStorageGallery()" class="save-to-gallery">
+            Save to gallery
+          </button>
+          <button onclick="onClearTextInput()">clear</button>
+          <a onclick="downloadImg(this)">download</a>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="copyright">All Rights Reserved © Noam Hertiger</div>
+      </div>
+    </footer>
+  </body>
+  <script src="../main.js"></script>
+  <script src="../controllers/memeController.js"></script>
+  <script src="../controllers/galleryController.js"></script>
+  <script src="../services//memeService.js"></script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/gallery.css" />
+    <link rel="stylesheet" href="../css/memes-editor.css" />
+    <link rel="stylesheet" href="../css/saved-memes.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body onload="onInit()">
+    <header>
+      <!-- <h1>logo</h1> -->
+      <img src="../imgs/bestlogo.png" alt="" />
+
+      <div class="header-buttons-box">
+        <a class="nav-tab" href="../meme-generator/index.html">Home</a>
+        <a class="nav-tab" href="../meme-generator/gallery.html">Gallery</a>
+        <a class="nav-tab" href="../meme-generator/memes-editor.html">Memes</a>
+        <a class="nav-tab" href="../meme-generator/saved-memes.html"
+          >Saved Memes</a
+        >
+      </div>
+    </header>
+
+    <section id="home-section" class="home-section">
+      <div class="home-container">
+        <div class="home-video">
+          <div class="title">Meme generator</div>
+          <video autoplay muted width="320" height="240" controls>
+            <source src="../imgs/homeVideo.mp4" type="video/mp4" />
+            <source src="../imgs/homeVideo.mp4" type="video/ogg" />
+          </video>
+          <div class="content">
+            Welcome to Meme Generator, in this website you will need to use your
+            creativity. Create funny memes with our tools designed for creators,
+            and share them with your friends. have fun.
+          </div>
+        </div>
+        <div class="home-text"></div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="copyright">All Rights Reserved © Noam Hertiger</div>
+      </div>
+    </footer>
+  </body>
+  <script src="../main.js"></script>
+  <script src="../controllers/memeController.js"></script>
+  <script src="../controllers/galleryController.js"></script>
+  <script src="../services/memeService.js"></script>
+</html>

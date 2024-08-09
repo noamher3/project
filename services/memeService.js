@@ -10,6 +10,12 @@ var gMeme = {
 };
 
 function getMeme() {
+  const gMemeLocalStorage = JSON.parse(localStorage.getItem(`chosen-meme`));
+  if (gMemeLocalStorage) {
+    localStorage.removeItem("chosen-meme");
+    setCurrentMeme(gMemeLocalStorage);
+    return gMemeLocalStorage;
+  }
   return gMeme;
 }
 
@@ -19,6 +25,12 @@ function setLineTxt(txt) {
 
 function setImg(id) {
   gMeme.selectedImgId = id;
+  gMeme.lines.forEach((item, index) => {
+    if (item.x === undefined) {
+      saveLinePosition(index, 0, item.size * index);
+    }
+  });
+  localStorage.setItem(`chosen-meme`, JSON.stringify(gMeme));
 }
 
 function setColorText(value) {
@@ -79,7 +91,8 @@ function saveToStorageGallery() {
 function getAllMemesFromStorageGallery() {
   const memes = [];
   for (let index = 0; index < localStorage.length; index++) {
-    memes.push(JSON.parse(localStorage.getItem(`meme-${index}`)));
+    const item = JSON.parse(localStorage.getItem(`meme-${index}`));
+    if (item) memes.push(item);
   }
   return memes;
 }
